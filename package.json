@@ -1,0 +1,19 @@
+{
+  "name": "lotocalculator",
+  "version": "1.0.0",
+  "description": "A loto calculator project",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evie-ey/lotoCalculator.git"
+  },
+  "author": "Evelyne Namwoyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evie-ey/lotoCalculator/issues"
+  },
+  "homepage": "https://github.com/Evie-ey/lotoCalculator#readme"
+}
