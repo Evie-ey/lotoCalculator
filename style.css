@@ -50,13 +50,13 @@ main {
 main section.description div,
 main .form-wrapper {
   background: #272727;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
   padding-top: 5px;
 }
 
 main .form-wrapper {
   background: #272727;
-  margin-bottom: 9px;
+  margin-bottom: 11px;
 }
 
 main .table-wrapper {
@@ -69,7 +69,7 @@ main h2 {
   font-size: 16px;
   padding: 10px;
   margin-bottom: 0;
-  margin-top: 9px;
+  margin-top: 11px;
 }
 
 section p {
@@ -116,12 +116,64 @@ form .form-content button:hover {
   font-size: 12px;
   text-align: left;
   padding: 12px;
+
 }
 
 .table-wrapper table tbody td {
   height: 24px;
   padding: 6px;
   border-bottom: 1px solid black;
+  /* opacity: 0;
+    transform: scale(0.6, 0.6) translate(50px, 0);
+    transition: opacity .2s ease-out, transform .2s ease-out; */
+}
+
+.table-wrapper table tbody td.animate {
+  /* opacity: 1;
+  transform: scale(1, 1) translate(0, 0); */
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+.table-wrapper table tbody td.disserminate {
+  opacity: 0;
+  transform: scale(0.6, 0.6) translate(50%, 50%);
+  /* animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s; */
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.table-wrapper table tbody tr:hover {
+  background-color: #191919;
 }
 
 .table-wrapper table tbody tr td:first-child {
@@ -166,7 +218,7 @@ form .form-content button:hover {
   }
 
   main section.form-table {
-    width: 64%;
+    width: 62.9%;
   }
 
   form .form-content {
@@ -198,10 +250,10 @@ form .form-content button:hover {
     padding-left: 15px;
   }
   form .form-content input {
-    width: 260px;
+    width: 244px;
     height: 36px;
     margin-right: 15px;
-    padding-left: 7px;
+    padding: 0 7px;
     font-size: 16px;
   }
 
@@ -240,7 +292,7 @@ form .form-content button:hover {
   }
 
   main section.form-table {
-    width: 74%;
+    width: 73.8%;
     margin-right: 5px;
   }
 }
