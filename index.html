@@ -1,82 +1,87 @@
 <!DOCTYPE html>
-<html lang="en" >
-    <head>
-      <head>
-        <meta charset="utf-8">
-        <title>Loto Calculator</title>
-        <meta name="description" content="This application calculates previous and next loto dates">
-        <meta name="viewport" content="width=device-width, intial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-      </head>
-    </head>
-    <body>
-      <!-- <header class="header-container">
+<html lang="en">
+
+<head>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Loto Calculator</title>
+    <meta name="description" content="This application calculates previous and next loto dates">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+</head>
+
+<body>
+  <!-- <header class="header-container">
         <h1>Lotto Calculater</h1>
       </header> -->
-      <main>
-        <header class="header-container">
-          <h1>Lotto Calculater</h1>
-        </header>
-        <section class="description">
-          <h2>The Irish Lotto</h2>
-          <div>
-            <p>
-              Since 16th April 1988, the Irish Lotto draw takes place every Saturday at 8pm.
-              On 30th May 1990 an additional Wednesday evening draw was introduced.
+  <main>
+    <header class="header-container">
+      <h1>Lotto Calculater</h1>
+    </header>
+    <section class="description">
+      <h2>The Irish Lotto</h2>
+      <div>
+        <p>
+          Since 16th April 1988, the Irish Lotto draw takes place every Saturday at 8pm.
+          On 30th May 1990 an additional Wednesday evening draw was introduced.
 
-            </p>
-            <p>
-              Enter a date in the form to get the next three draw dates as well as the previous two draws.
-            </p>
-          </div>
-        </section>
-        <section class="form-table">
-          <h2>
-            Enter a Date and Time
-          </h2>
+        </p>
+        <p>
+          Enter a date in the form to get the next three draw dates as well as the previous two draws.
+        </p>
+      </div>
+    </section>
+    <section class="form-table">
+      <h2>
+        Enter a Date and Time
+      </h2>
 
-          <div class="form-wrapper">
-            <form>
-              <div class="form-content">
-                <input type="datetime-local" name="date" />
-                <button type="submit">Submit</button>
-              </div>
+      <div class="form-wrapper">
+        <form id="form">
+          <div class="form-content">
+            <input type="datetime-local" name="drawDate" />
+            <button type="submit" onclick="getNextLottoDraw()">Submit</button>
+          </div>
 
-            </form>
-          </div>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th> DRAW HEAD</th>
-                  <th> PAST OR FUTURE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>02-04-2019</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>02-04-2019</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
-    </body>
+        </form>
+      </div>
+      <div class="table-wrapper">
+        <table id="lottery-table">
+          <thead>
+            <tr>
+              <th> DRAW HEAD</th>
+              <th> PAST OR FUTURE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>02-04-2019</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>02-04-2019</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>

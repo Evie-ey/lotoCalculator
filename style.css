@@ -1,4 +1,4 @@
-/* Look at font family, accessibility */
+/* Look at font family, accessibility, aria, check new date compartibility */
 
 @font-face {
   font-family: "Roboto";
@@ -99,6 +99,13 @@ form .form-content button {
   text-transform: uppercase;
 }
 
+form .form-content button:hover {
+  cursor: pointer;
+ background: #873805 0% 0% no-repeat padding-box;
+ box-shadow: 0px 2px 4px #00000059;
+  border: 1px solid #873805;
+}
+
 .table-wrapper table {
   width: 100%;
   border-collapse: collapse;
@@ -112,7 +119,7 @@ form .form-content button {
 }
 
 .table-wrapper table tbody td {
-  height: 16px;
+  height: 24px;
   padding: 6px;
   border-bottom: 1px solid black;
 }
@@ -155,7 +162,7 @@ form .form-content button {
   }
 
   main section.description div {
-    height: 84%;
+    height: 86%;
   }
 
   main section.form-table {
