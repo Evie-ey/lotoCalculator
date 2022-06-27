@@ -32,6 +32,7 @@ thead {
   flex-wrap: wrap;
   justify-content: center;
   height: 70px;
+  position: relative;
 }
 
 header h1 {
@@ -42,8 +43,30 @@ header h1 {
 main {
   color: #FFFFFF;
   /* background: #272727 0% 0% no-repeat padding-box; */
+}
 
+.new-flyer {
+  width: 184px;
+  height: 176px;
+  /* transform: skew(09deg,1deg); */
+  background: #FA6200;
+  right: 0px;
+  top: -1px;
+  text-align: center;
+  position: absolute;
+  -webkit-clip-path: polygon(80% 0, 100% 19%, 100% 37%, 65% 0);
+  clip-path: polygon(80% 0, 100% 19%, 100% 37%, 65% 0);
+  color: white;
+}
 
+.new-flyer:after {
+  position: absolute;
+  content: "NEW";
+  transform: skew(-53deg,48deg);
+  top: 17px;
+  right: 16px;
+  font-size: 8px;
+  padding-top: 2px;
 }
 
 main section.description div,
@@ -188,6 +211,8 @@ form .form-content button:hover {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+
 
   .header-container {
     width: 100%;
