@@ -7,12 +7,12 @@
     <meta charset="utf-8">
     <title>Loto Calculator</title>
     <meta name="description" content="This application calculates previous and next loto dates">
-    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
   </head>
 </head>
 
-<body>
+<body onload="initial_load()">
   <!-- <header class="header-container">
         <h1>Lotto Calculater</h1>
       </header> -->
@@ -41,8 +41,8 @@
       <div class="form-wrapper">
         <form id="form">
           <div class="form-content">
-            <input type="datetime-local" name="drawDate" />
-            <button type="submit" onclick="getNextLottoDraw()">Submit</button>
+            <input type="datetime-local" name="drawDate" id="date-input" aria-label="date" />
+            <button type="submit">Submit</button>
           </div>
 
         </form>
@@ -57,11 +57,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>02-04-2019</td>
+              <td></td>
               <td></td>
             </tr>
             <tr>
-              <td>02-04-2019</td>
+              <td></td>
               <td></td>
             </tr>
             <tr>

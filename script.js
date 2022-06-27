@@ -1,22 +1,70 @@
 const form = document.querySelector('#form')
 
-document.addEventListener('submit', function (e) {
+const submitButton = document.querySelector('#form button')
+
+const date_input = document.querySelector('#form #date-input')
+
+function initial_load() {
+  let initial_date = new Date();
+  let hours = initial_date.getHours() < 9 ? `0${initial_date.getHours()}` : initial_date.getHours()
+  let minutes = initial_date.getMinutes() < 9 ? `0${initial_date.getMinutes()}`
+    : initial_date.getMinutes()
+   const day = initial_date.getDate()  < 9
+    ? `0${initial_date.getDate() }`: initial_date.getDate() ;
+  // Add 1 as getMonth starts at 0
+  const month = initial_date.getMonth() + 1 < 10
+    ? `0${initial_date.getMonth() + 1}`: initial_date.getMonth() + 1;
+
+
+  const year = initial_date.getFullYear();
+
+  initial_date = `${year}-${month}-${day}T${hours}:${minutes}`
+  date_input.value = `${year}-${month}-${day}T${hours}:${minutes}`
+
+  console.log(new Date(initial_date), 'initialll')
+
+  const lottery_draw_dates = getNextLottoDraw(new Date(initial_date))
+  populate_table_data(lottery_draw_dates)
+}
+
+function remove_class(class_to_remove) {
+  const table_data = document.querySelectorAll('.table-wrapper table tbody td');
+  for (let col = 0; col < table_data.length; col++) {
+    table_data[col].classList.add(class_to_remove);
+  }
+}
+date_input.addEventListener('change', function(e) {
+  const table_data = document.querySelectorAll('.table-wrapper table tbody td');
+  for (let col = 0; col < table_data.length; col++) {
+    table_data[col].classList.remove('animate');
+    table_data[col].classList.add('disserminate');
+  }
+})
+
+submitButton.addEventListener('click', function (e) {
   e.preventDefault();
   const form_data = new FormData(form)
   const lottery_draw_dates = getNextLottoDraw(new Date(form_data.get('drawDate')));
-  console.log(lottery_draw_dates, 'fff')
+
+  populate_table_data(lottery_draw_dates)
+
+})
+
+function populate_table_data(lottery_draw_dates) {
+  const table_data = document.querySelectorAll('.table-wrapper table tbody td');
 
   const table = document.querySelector('#lottery-table');
+  count = 0
 
   for (let row = 1; row < table.rows.length; row++) {
     for (let col = 0; col < table.rows[row].cells.length; col++){
-      // table.rows[i].cells[j].innerHTML = array[i - 1][j];
+      table_data[count].classList.remove('disserminate');
       table.rows[row].cells[col].innerHTML = lottery_draw_dates[row - 1][col]
+      table_data[count].classList.add('animate');
+      count+=1;
     }
   }
-
-  formatDate(new Date())
-})
+}
 
 const formatDate = function(date_to_format) {
   const day = date_to_format.getDate()  < 9
@@ -43,7 +91,8 @@ function getNextLottoDraw(current_date) {
 
   switch (true) {
     case day_index < 3:
-      console.log('Sun, Mon, Tue')
+      console.log('mondaty, here index-', day_index)
+      console.log(next_draw_date, 'Sun, Mon, Tue')
       next_draw_date.setDate(current_date.getDate() + 3 - day_index);
       future_draw_one.setDate(current_date.getDate() + 6 - day_index);
       future_draw_two.setDate(current_date.getDate() + 10 - day_index);
@@ -55,7 +104,7 @@ function getNextLottoDraw(current_date) {
 
       break;
     case day_index > 3 && day_index < 6:
-      console.log('Thur, Fri', day_index)
+      console.log('Thur, Fri - index', day_index)
       next_draw_date.setDate(current_date.getDate() + 6 - day_index);
       future_draw_one.setDate(current_date.getDate() + 10 - day_index);
       future_draw_two.setDate(current_date.getDate() + 13 - day_index);
