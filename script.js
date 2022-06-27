@@ -4,6 +4,8 @@ const submitButton = document.querySelector('#form button')
 
 const date_input = document.querySelector('#form #date-input')
 
+// This is the function which runs on initial load
+// Populates the table with default date
 function initial_load() {
   let initial_date = new Date();
   let hours = initial_date.getHours() < 9 ? `0${initial_date.getHours()}` : initial_date.getHours()
@@ -19,9 +21,10 @@ function initial_load() {
   const year = initial_date.getFullYear();
 
   initial_date = `${year}-${month}-${day}T${hours}:${minutes}`
+
+  // Add default date to input element
   date_input.value = `${year}-${month}-${day}T${hours}:${minutes}`
 
-  console.log(new Date(initial_date), 'initialll')
 
   const lottery_draw_dates = getNextLottoDraw(new Date(initial_date))
   populate_table_data(lottery_draw_dates)
@@ -30,7 +33,7 @@ function initial_load() {
 function remove_class(class_to_remove) {
   const table_data = document.querySelectorAll('.table-wrapper table tbody td');
   for (let col = 0; col < table_data.length; col++) {
-    table_data[col].classList.add(class_to_remove);
+    table_data[col].classList.remove(class_to_remove);
   }
 }
 date_input.addEventListener('change', function(e) {
@@ -41,6 +44,11 @@ date_input.addEventListener('change', function(e) {
   }
 })
 
+date_input.addEventListener('click', function(e) {
+  // this.showPicker();
+})
+
+// Listen for when a user submits the data data
 submitButton.addEventListener('click', function (e) {
   e.preventDefault();
   const form_data = new FormData(form)
@@ -50,6 +58,7 @@ submitButton.addEventListener('click', function (e) {
 
 })
 
+// Adding date data to the table
 function populate_table_data(lottery_draw_dates) {
   const table_data = document.querySelectorAll('.table-wrapper table tbody td');
 
@@ -79,7 +88,8 @@ const formatDate = function(date_to_format) {
 
 }
 
-
+/*This function generates future and past lottery draw dates,
+  given a specific dates */
 function getNextLottoDraw(current_date) {
   const next_draw_date = new Date(current_date);
   const future_draw_one = new Date(current_date);
@@ -90,9 +100,9 @@ function getNextLottoDraw(current_date) {
   const day_index = new Date(current_date).getDay()
 
   switch (true) {
+    /*This switch case returns dates if the date is less than Wednesday.
+    Wednesday being at index 0. i.e Sun, Mon, Tue */
     case day_index < 3:
-      console.log('mondaty, here index-', day_index)
-      console.log(next_draw_date, 'Sun, Mon, Tue')
       next_draw_date.setDate(current_date.getDate() + 3 - day_index);
       future_draw_one.setDate(current_date.getDate() + 6 - day_index);
       future_draw_two.setDate(current_date.getDate() + 10 - day_index);
@@ -103,6 +113,9 @@ function getNextLottoDraw(current_date) {
         [formatDate(future_draw_two), "Future"]]
 
       break;
+    /*This switch case returns future and past dates if
+      the given date is greater than Wednesday.
+      but less than Saturday ie Thursday and Friday */
     case day_index > 3 && day_index < 6:
       console.log('Thur, Fri - index', day_index)
       next_draw_date.setDate(current_date.getDate() + 6 - day_index);
@@ -114,15 +127,18 @@ function getNextLottoDraw(current_date) {
         [formatDate(next_draw_date), "Future"], [formatDate(future_draw_one), "Future"],
         [formatDate(future_draw_two), "Future"]]
       break;
+    /*This switch case returns future and past dates if
+      the given date is a Saturday */
+      case day_index > 3 && day_index < 6:
     case day_index === 6:
+      // Checks if time is past 8pm, sets the date to next day(Sunday)
       if (new Date(current_date).getHours() > 19) {
         next_draw_date.setHours(24, 0, 0, 0, 0)
         future_draw_one.setHours(24, 0, 0, 0, 0)
         future_draw_two.setHours(24, 0, 0, 0, 0)
         past_draw_one.setHours(24, 0, 0, 0, 0)
         past_draw_two.setHours(24, 0, 0, 0, 0)
-
-        // Date goes to Sunday index < 3 // function for when its < 3 ignoring index
+        // Checks future dates, when date has been reset to Sunday
         next_draw_date.setDate(current_date.getDate() + 4);
         future_draw_one.setDate(current_date.getDate() + 7);
         future_draw_two.setDate(current_date.getDate() + 11);
@@ -132,7 +148,7 @@ function getNextLottoDraw(current_date) {
           [formatDate(next_draw_date), "Future"], [formatDate(future_draw_one), "Future"],
           [formatDate(future_draw_two), "Future"]]
       } else {
-        // call func for when its > 3
+        // Checks future dates, when time is before 8pm on Saturday
         next_draw_date.setDate(current_date.getDate() + 6 - day_index);
         future_draw_one.setDate(current_date.getDate() + 10 - day_index);
         future_draw_two.setDate(current_date.getDate() + 13 - day_index);
@@ -144,7 +160,8 @@ function getNextLottoDraw(current_date) {
 
       }
       break;
-
+     /*This switch case returns future and past dates if
+      the given date is a Wednesday */
     case day_index === 3:
       if (new Date(current_date).getHours() > 19) {
         next_draw_date.setHours(24, 0, 0, 0, 0)
@@ -153,8 +170,7 @@ function getNextLottoDraw(current_date) {
         past_draw_one.setHours(24, 0, 0, 0, 0)
         past_draw_two.setHours(24, 0, 0, 0, 0)
 
-        // call func for when > 3
-
+        // Checks future dates, when date has been reset to Thursday
         next_draw_date.setDate(current_date.getDate() + 6 - day_index);
         future_draw_one.setDate(current_date.getDate() + 10 - day_index);
         future_draw_two.setDate(current_date.getDate() + 13 - day_index);
