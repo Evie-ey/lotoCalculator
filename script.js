@@ -68,8 +68,8 @@ function populate_table_data(lottery_draw_dates) {
   for (let row = 1; row < table.rows.length; row++) {
     for (let col = 0; col < table.rows[row].cells.length; col++){
       table_data[count].classList.remove('disserminate');
-      table.rows[row].cells[col].innerHTML = lottery_draw_dates[row - 1][col]
-      table_data[count].classList.add('animate');
+        table.rows[row].cells[col].innerHTML = lottery_draw_dates[row - 1][col]
+        table_data[count].classList.add('animate');
       count+=1;
     }
   }
