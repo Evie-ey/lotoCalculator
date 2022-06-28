@@ -9,6 +9,7 @@ The application determines the 5 draw dates based on the date and time the user 
 The table of results should show 5 draw dates - the next Lotto draw should be in row 3, with the 2 previous draws in rows 1 and 2, and the
 following draws in rows 4 and 5.
 "Past or Future" column contains “Past” or “Future” as appropriate.
+## *The lottery draw takes place every Saturday and Wednesday at 8pm*
 
 
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These are specific to windows machines.
